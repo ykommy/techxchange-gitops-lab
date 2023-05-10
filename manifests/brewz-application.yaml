@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: brewz
+  namespace: causal-gnu
+spec:
+  project: default
+  source:
+    path: manifests/brewz
+    repoURL: https://github.com/ykommy/techxchange-gitops-lab.git
+    targetRevision: HEAD
+  destination:
+    namespace: causal-gnu
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
