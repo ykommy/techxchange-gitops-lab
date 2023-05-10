@@ -38,7 +38,7 @@ spec:
         - name: rate-limit-policy
       action:
         pass: api
-      errorPage:
+      errorPages:
         - codes: [404]
           return:
             code: 404
